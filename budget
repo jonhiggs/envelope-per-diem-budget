@@ -26,15 +26,19 @@ def per_diem_days_remaining
 end
 
 def required_balance
-  per_diem_days_remaining * PER_DIEM
+  (per_diem_days_remaining * PER_DIEM).round(2)
 end
 
 def cost_of_day date
   if date.wday == 5
-    PER_DIEM + ( PER_DIEM * WEEKEND_BONUS )
+    PER_DIEM + weekend_bonus
   else
     PER_DIEM
   end
+end
+
+def weekend_bonus
+  ( PER_DIEM * WEEKEND_BONUS ).round(2)
 end
 
 def cash_runway balance=0
@@ -54,10 +58,19 @@ def eom_balance balance=0
   (balance - required_balance).round(2)
 end
 
-balance = ARGV[0].to_f
+bank = ARGV[0].to_f.round(2) || 0
+cash = ARGV[1].to_f.round(2) || 0
+balance = bank + cash
 
+puts "Bank Balance:       $ #{bank}"
+puts "Cash Balance:       $ #{cash}"
+puts "Net Balance:        $ #{balance}"
+puts "EOM Balance:        $ #{eom_balance balance}"
+puts
 puts "Requried Balance:   $ #{required_balance}"
 puts "Payday:             #{days_remaining} days"
 puts "Cash Runway:        #{cash_runway balance} days"
 puts "Maximum Spend:      $ #{maximum_spend balance}"
-puts "EOM Balance:        $ #{eom_balance balance}"
+puts
+puts "Per-Diem:           $ #{PER_DIEM}"
+puts "Weekend Bonus:      $ #{weekend_bonus}"
