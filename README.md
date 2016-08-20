@@ -1,12 +1,16 @@
 # Budget
 
-## Rational
+A set of rules and helper scripts to simplify the maintenance of a per-diem budget.
 
-- Envelope budgets are great
-- Hard to track spending on cards
-- Cash is private
-- Keeps you mindful
-- Easy to get back on the wagon
+- Low overheads
+- Minimise impulsive purchases
+- Avoid missing out or breaking budget due to lack of planning or unforeseeable circumstances.
+- Easy to restart if you make a mistake.
+- You can start at any point in the month.
+
+Parcelling myself out cash on a daily basis makes it easy to not inadvertently overspend on the little things. However, it is impossible for me to pay for the irregular, costly things like a tank full of petrol, a new pair of shoes or a friends birthday dinner.
+
+With better planning at the start of each month, I hope that this tool will make it easy.
 
 
 ## Rules
@@ -35,13 +39,22 @@ Emergencies do not need to come from per-diem:
 - Car repairs
 - Appliance replacement
 
+
+Any extra money goes into your days per-diem:
+
+- Overtime
+- Sale of items
+- Gifts
+
 ---
 
-* You pay yourself a per-diem each day which is to sustain you through that day.
-* You can pay yourself an optional weekend bonus to encourage fun.
-* Any extra money earned or gifted goes into that days per-diem.
-* Emergencies like car repairs or replacement appliances can be paid from credit card.
-* Things that are bought on credit card are excluded from per-diem
+## How it works
+
+At the start of the month, you pay your bills, determine how much you need to live off for the month, then put the rest into a savings account.
+
+For each day, you give yourself a per-diem.
+
+Every Friday, you give yourself a weekend bonus to make sure you have enough money to have some fun.
 
 
 ## How to use
@@ -61,11 +74,3 @@ Friday:
 
 1. Take your weekend bonus from your cash buffer
 
-
-## More Usage
-
-
-## Tips
-
-* Make sure that there are no automatic withdraws from your account which might push you into a negative balance.
-* It's best to not take out all of your money per-day to cover intermittent expenses like fuel or transport tickets.
