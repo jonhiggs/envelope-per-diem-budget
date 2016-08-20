@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+require 'yaml'
+
+settings_file = File.join(File.dirname(__FILE__), "bills.yml")
+settings = YAML.load_file(settings_file)
+SALARY = settings["salary"]
+BILLS = settings["bills"]
+
+def bills
+  total = 0
+  BILLS.each {|name,amount| total += amount }
+  total
+end
+
+def savings
+  SALARY - bills
+end
+
+puts "Bills:    $ #{bills.round(2)}"
+puts "Savings:  $ #{savings.round(2)}"

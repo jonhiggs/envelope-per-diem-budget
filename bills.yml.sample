@@ -1,0 +1,9 @@
+---
+salary: 4000
+bills:
+  credit_card: 808
+  electricity: 102
+  gas: 34
+  internet: 60
+  rent: 1400
+  water: 50

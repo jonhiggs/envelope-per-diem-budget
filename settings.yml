@@ -1,4 +1,4 @@
 ---
-pay_day: 15         # The day of the month you are paid
+pay_day: 15         # The day of the month which you are paid
 weekend_bonus: 2    # Weekend bonus ( value is n * per-diem )
 per_diem: 30        # Your per-diem rate

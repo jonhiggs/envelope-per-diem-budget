@@ -67,10 +67,10 @@ puts "Cash Balance:       $ #{cash}"
 puts "Net Balance:        $ #{balance}"
 puts "EOM Balance:        $ #{eom_balance balance}"
 puts
-puts "Requried Balance:   $ #{required_balance}"
+puts "Required Balance:   $ #{required_balance}"
 puts "Payday:             #{days_remaining} days"
 puts "Cash Runway:        #{cash_runway balance} days"
 puts "Maximum Spend:      $ #{maximum_spend balance}"
 puts
-puts "Per-Diem:           $ #{PER_DIEM}"
+puts "Per-Diem:           $ #{PER_DIEM.round(2)}"
 puts "Weekend Bonus:      $ #{weekend_bonus}"
