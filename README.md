@@ -27,6 +27,23 @@
 1. Take your per-diem from your cash buffer
 
 
+## More Usage
+
+How long will my money last?
+```
+    ./cash_runway <current_balance>
+```
+
+How comfortable can I live?
+```
+    ./maximum_confort <current_balance>
+```
+
+How much money will I have at the end of the month if I maintain my per-diem?
+```
+    ./eom_balance <current_balance>
+```
+
 ## Tips
 
 * Make sure that there are no automatic withdraws from your account which might push you into a negative balance.

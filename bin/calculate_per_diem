@@ -1,0 +1,63 @@
+#!/usr/bin/env ruby
+require 'date'
+require 'yaml'
+
+settings_file = File.join(File.dirname(__FILE__), "settings.yml")
+settings = YAML.load_file(settings_file)
+PAY_DAY = settings["pay_day"]
+WEEKEND_BONUS = settings["weekend_bonus"]
+PER_DIEM = settings["per_diem"]
+
+def next_pay_day
+  if Date.today.day < PAY_DAY
+    Date.parse("#{PAY_DAY}th")
+  else
+    Date.new(Date.today.year, Date.today.month+1, PAY_DAY)
+  end
+end
+
+def days_remaining
+  next_pay_day.mjd - Date.today.mjd
+end
+
+def per_diem_days_remaining
+  fridays = (Date.today+1..next_pay_day).to_a.select {|k| k.wday == 5}.size
+  days_remaining + ( WEEKEND_BONUS * fridays )
+end
+
+def required_balance
+  per_diem_days_remaining * PER_DIEM
+end
+
+def cost_of_day date
+  if date.wday == 5
+    PER_DIEM + ( PER_DIEM * WEEKEND_BONUS )
+  else
+    PER_DIEM
+  end
+end
+
+def cash_runway balance=0
+  days = 0
+  while balance >= PER_DIEM
+    balance -= cost_of_day(Date.today+days)
+    days += 1
+  end
+  days
+end
+
+def maximum_spend balance=0
+  (balance / per_diem_days_remaining).round(2)
+end
+
+def eom_balance balance=0
+  (balance - required_balance).round(2)
+end
+
+balance = ARGV[0].to_f
+
+puts "Requried Balance:   $ #{required_balance}"
+puts "Payday:             #{days_remaining} days"
+puts "Cash Runway:        #{cash_runway balance} days"
+puts "Maximum Spend:      $ #{maximum_spend balance}"
+puts "EOM Balance:        $ #{eom_balance balance}"
