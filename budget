@@ -7,6 +7,7 @@ settings = YAML.load_file(settings_file)
 PAY_DAY = settings["pay_day"]
 WEEKEND_BONUS = settings["weekend_bonus"]
 PER_DIEM = settings["per_diem"]
+BUFFER = settings["buffer"]
 
 def next_pay_day
   if Date.today.day < PAY_DAY
@@ -25,8 +26,16 @@ def per_diem_days_remaining
   days_remaining + ( WEEKEND_BONUS * fridays )
 end
 
-def required_balance
+def buffer
+  (per_diem_days_remaining * PER_DIEM * BUFFER).round(2)
+end
+
+def per_diem_balance
   (per_diem_days_remaining * PER_DIEM).round(2)
+end
+
+def required_balance
+  (per_diem_balance + buffer).round(2)
 end
 
 def cost_of_day date
@@ -55,22 +64,28 @@ def maximum_spend balance=0
 end
 
 def eom_balance balance=0
-  (balance - required_balance).round(2)
 end
+
+def buffer_balance balance=0
+  (balance - per_diem_balance).round(2)
+end
+
 
 bank = ARGV[0].to_f.round(2) || 0
 cash = ARGV[1].to_f.round(2) || 0
 balance = bank + cash
 
-puts "Bank Balance:       $ #{bank}"
-puts "Cash Balance:       $ #{cash}"
-puts "Net Balance:        $ #{balance}"
-puts "EOM Balance:        $ #{eom_balance balance}"
-puts
-puts "Required Balance:   $ #{required_balance}"
+unless balance == 0
+  puts "Bank Balance:       $ #{bank}"
+  puts "Cash Balance:       $ #{cash}"
+  puts "Net Balance:        $ #{balance}"
+  puts "Cash Runway:        #{cash_runway balance} days"
+  puts "Maximum Spend:      $ #{maximum_spend balance}"
+  puts "Buffer:             $ #{buffer_balance balance}"
+  puts
+end
+puts "Budget:             $ #{required_balance}"
 puts "Payday:             #{days_remaining} days"
-puts "Cash Runway:        #{cash_runway balance} days"
-puts "Maximum Spend:      $ #{maximum_spend balance}"
 puts
 puts "Per-Diem:           $ #{PER_DIEM.round(2)}"
 puts "Weekend Bonus:      $ #{weekend_bonus}"
