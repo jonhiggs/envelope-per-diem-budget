@@ -74,3 +74,10 @@ Friday:
 
 1. Take your weekend bonus from your cash buffer
 
+
+
+## Values
+
+- Per-Diem Buffer: Amount of money per day that is put aside for the big irregular things like fuel.
+- Per-Diem Cash: How much money you doll out to yourself each day.
+- Weekend Bonus: Extra cash to make the weekend that little bit more fun.
