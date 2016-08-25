@@ -25,15 +25,27 @@ module Budget
     end
 
     def days
-      next_payday.mjd - last_payday.mjd
+      (last_payday..next_payday-1).to_a
     end
 
     def remaining_days
-      next_payday.mjd - @today.mjd
+      (@today..next_payday-1).to_a
     end
 
     def elapsed_days
-      @today.mjd - last_payday.mjd
+      (last_payday..@today).to_a
+    end
+
+    def bonus_days
+      (last_payday..next_payday).to_a.select { |d| d.wday == 5 }
+    end
+
+    def remaining_bonuses
+      (@today..next_payday).to_a.select { |d| d.wday == 5 }.size
+    end
+
+    def bonus_day?
+      @today.friday?
     end
   end
 end
