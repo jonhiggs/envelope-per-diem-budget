@@ -1,19 +1,20 @@
 module Budget
   class Calendar
-    require 'date'
+    require 'active_support/all'
 
-    attr_reader :today
+    attr_accessor :day
 
     def initialize payday=15
-      @today = Date.today
+      @day = Date.today
       @payday = payday
     end
 
     def payday relative_month=0
-      month=@today.month
-      month += 1 if @today.day > @payday
-      month += relative_month
-      Date.parse("#{month}/#{@payday}")
+      relative_month += 1 if @day.day > @payday
+      date = @day + relative_month.months
+      month = date.month
+      year = date.year
+      Date.parse("#{year}/#{month}/#{@payday}")
     end
 
     def next_payday
@@ -29,11 +30,11 @@ module Budget
     end
 
     def remaining_days
-      (@today..next_payday-1).to_a
+      (@day+1..next_payday-1).to_a
     end
 
     def elapsed_days
-      (last_payday..@today).to_a
+      (last_payday..@day).to_a
     end
 
     def bonus_days
@@ -41,11 +42,11 @@ module Budget
     end
 
     def remaining_bonuses
-      (@today..next_payday).to_a.select { |d| d.wday == 5 }.size
+      (@day..next_payday).to_a.select { |d| d.wday == 5 }
     end
 
     def bonus_day?
-      @today.friday?
+      @day.friday?
     end
   end
 end
