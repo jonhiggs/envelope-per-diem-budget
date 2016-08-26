@@ -19,7 +19,7 @@ module Budget
 
     private
     def payday relative_month=0
-      relative_month += 1 if @day.day > @payday
+      relative_month += 1 if @day.day >= @payday
       date = @day + relative_month.months
       month = date.month
       year = date.year

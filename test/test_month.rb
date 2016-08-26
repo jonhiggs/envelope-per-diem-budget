@@ -15,7 +15,7 @@ context "#Budget::Month" do
   end
 
   context "when 2016/03/15" do
-    hookup { topic.calendar.day = Date.parse("2014/12/22") }
+    hookup { topic.calendar.day = Date.parse("2016/03/15") }
     asserts("cash") { topic.cash }.equals(930)
     asserts("buffer") { topic.buffer }.equals(93)
     asserts("bonus") { topic.bonus }.equals(240)

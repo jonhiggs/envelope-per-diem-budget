@@ -3,8 +3,6 @@ module Budget
     require 'active_support/all'
 
     attr_reader :calendar
-    attr_reader :cash_value
-    attr_reader :bonus_value
 
     def initialize day=Date.today
       @calendar = Budget::Calendar.new
