@@ -1,48 +1,7 @@
 #!/usr/bin/env ruby
 require '../lib/budget.rb'
-
-
-#require 'date'
-#require 'yaml'
-#
 #settings_file = File.join(File.dirname(__FILE__), "settings.yml")
 #settings = YAML.load_file(settings_file)
-#PAY_DAY = settings["pay_day"]
-#WEEKEND_BONUS = settings["weekend_bonus"]
-#PER_DIEM = settings["per_diem"]
-#BUFFER = settings["buffer"]
-#
-#def buffer_remaining
-#  (per_diem_days_remaining * PER_DIEM * BUFFER).round(2)
-#end
-#
-#def per_diem_remaining
-#  (per_diem_days_remaining * PER_DIEM).round(2)
-#end
-#
-#def budget_remaining
-#  (per_diem_remaining + buffer_remaining).round(2)
-#end
-#
-#def budget_value
-#  cash = per_diem_days(last_pay_day, next_pay_day-1) * per_diem_cash_value
-#  buffer = (days(last_pay_day, next_pay_day-1) * per_diem_buffer_value)
-#  cash + buffer
-#  per_diem_days(last_pay_day, next_pay_day-1)
-#end
-#
-#def per_diem_cash_value
-#  PER_DIEM.round(2)
-#end
-#
-#def per_diem_buffer_value
-#  (PER_DIEM * BUFFER).round(2)
-#end
-#
-#def weekend_bonus_value
-#  ( PER_DIEM * WEEKEND_BONUS ).round(2)
-#end
-#
 #def cash_runway balance=0
 #  days = 0
 #  while balance >= PER_DIEM
@@ -55,38 +14,22 @@ require '../lib/budget.rb'
 #def maximum_spend balance=0
 #  (balance / per_diem_days_remaining).round(2)
 #end
-#
-#def buffer_balance balance=0
-#  (balance - per_diem_remaining).round(2)
-#end
-#
-#def cost_of_day date
-#  cost = per_diem_cash_value + per_diem_buffer_value
-#  cost += weekend_bonus_value if date.wday == 5
-#  cost
-#end
 
-calendar = Budget::Calendar.new
-per_diem = Budget::PerDiem.new(calendar)
+@balance = Budget::Balance.new
+@day=Budget::Day.new(Date.today)
+@balance.day = Date.today
+@balance.bank = ARGV[0].to_f || 0
+@balance.cash = ARGV[1].to_f || 0
 
-per_diem.bank_balance = ARGV[0].to_f.round(2) || 0
-per_diem.cash_balance = ARGV[1].to_f.round(2) || 0
-
-unless per_diem.balance == 0
-  puts "Bank Balance:       $ #{per_diem.bank_balance}"
-  puts "Cash Balance:       $ #{per_diem.cash_balance}"
-  puts "Net Balance:        $ #{per_diem.balance}"
-  puts "Cash Runway:        #{per_diem.runway} days"
-  puts "Maximum Spend:      $ #{maximum_spend balance}"
-  #puts "Buffer:             $ #{buffer_balance balance}"
+unless @balance.net.zero?
+  puts "Bank Balance:       $ #{@balance.bank}"
+  puts "Cash Balance:       $ #{@balance.cash}"
+  puts "Net Balance:        $ #{@balance.net}"
+  #puts "Cash Runway:        #{per_diem.runway} days"
+  puts "Break Even:         $ #{@balance.break_even}"
+  puts "Position:           $ #{@balance.surplus}"
   puts
 end
-#puts "Budget:             $ #{budget_remaining}"
-puts "Payday:             #{calendar.remaining_days.size} days"
-puts
 
-#puts "Days in Budget:     #{calendar.days.size}"
-#puts "Monthy Budget:      $ #{budget_value}"
-#puts "Per-Diem Buffer:    $ #{per_diem_buffer_value}"
-#puts "Per-Diem Cash:      $ #{per_diem.cash_today}"
-#puts "Weekend Bonus:      $ #{weekend_bonus_value}"
+puts "Remaining Days:     #{@balance.days_remaining.size} days (#{@balance.calendar.days.last + 1.day})"
+puts "Today's Per-Diem:   $#{@day.cash + @day.bonus}"

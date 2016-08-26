@@ -54,6 +54,10 @@ module Budget
       net - budgeted
     end
 
+    def break_even
+      ( budgeted + surplus ) / days_remaining.size
+    end
+
     def days_elapsed
       @calendar.days.map {|d| d if d <= @day }.compact
     end
