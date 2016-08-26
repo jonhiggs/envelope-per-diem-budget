@@ -4,9 +4,10 @@ module Budget
 
     def initialize day=Date.today
       @day = day
-      @per_diem = 30
-      @bonus_multiplier = 2
-      @buffer_multiplier = 0.10
+      @per_diem = SETTINGS["per_diem"]
+      @bonus_multiplier = SETTINGS["bonus_multiplier"]
+      @buffer_multiplier =SETTINGS["buffer_multiplier"]
+
     end
 
     def cash

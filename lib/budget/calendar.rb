@@ -6,7 +6,7 @@ module Budget
 
     def initialize day=Date.today
       @day = day
-      @payday = 15
+      @pay_day = SETTINGS["pay_day"]
     end
 
     def days
@@ -18,20 +18,20 @@ module Budget
     end
 
     private
-    def payday relative_month=0
-      relative_month += 1 if @day.day >= @payday
+    def pay_day relative_month=0
+      relative_month += 1 if @day.day >= @pay_day
       date = @day + relative_month.months
       month = date.month
       year = date.year
-      Date.parse("#{year}/#{month}/#{@payday}")
+      Date.parse("#{year}/#{month}/#{@pay_day}")
     end
 
     def start_of_month
-      payday(-1)
+      pay_day(-1)
     end
 
     def end_of_month
-      payday(0) - 1.day
+      pay_day(0) - 1.day
     end
 
   end

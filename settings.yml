@@ -1,5 +1,5 @@
 ---
-pay_day: 15         # The day of the month which you are paid
-weekend_bonus: 2    # Weekend bonus ( value is n * per-diem )
-per_diem: 30        # Your per-diem rate
-buffer: 0.10        # Buffer to cover the irregular things. (0.10 == 10%)
+pay_day: 15               # The day of the month which you are paid
+bonus_multiplier: 2       # Weekend bonus ( value is n * per-diem )
+per_diem: 30              # Your per-diem rate
+buffer_multiplier: 0.10   # Buffer to cover the irregular things. (0.10 == 10%)
