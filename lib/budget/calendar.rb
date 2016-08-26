@@ -4,9 +4,9 @@ module Budget
 
     attr_accessor :day
 
-    def initialize payday=15
-      @day = Date.today
-      @payday = payday
+    def initialize day=Date.today
+      @day = day
+      @payday = 15
     end
 
     def days

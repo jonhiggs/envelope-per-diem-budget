@@ -3,9 +3,15 @@ module Budget
     require 'active_support/all'
 
     attr_reader :calendar
+    attr_reader :day
 
     def initialize day=Date.today
-      @calendar = Budget::Calendar.new
+      @day = day
+      @calendar = Budget::Calendar.new(day)
+    end
+
+    def day=(day)
+      @calendar.day = day
     end
 
     def cash
