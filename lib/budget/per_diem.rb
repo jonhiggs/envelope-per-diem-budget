@@ -31,19 +31,20 @@ module Budget
     end
 
     def consumed
-      puts "not done"
+      calendar.elapsed_days.map { |d| cash_on_day(d) }.reduce(0, :+)
     end
 
     def runway
       b = self.balance
-      d = 0
+      d = today
+      r = 0
       until b <= 0
         cost = cash_on_day(d)
-        puts "cost is #{cost}"
         b -= cost
-        d += 1
+        d += 1.day
+        r += 1 if b >= 0
       end
-      d
+      r
     end
 
   end

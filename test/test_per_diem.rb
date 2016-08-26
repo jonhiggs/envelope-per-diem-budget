@@ -21,7 +21,22 @@ context "#Budget::PerDiem" do
     asserts("cash_on_day(Date.today + 4.day)") { topic.cash_on_day(topic.today + 4.day) }.equals(90)
     asserts("cash_on_day(Date.today + 5.day)") { topic.cash_on_day(topic.today + 5.day) }.equals(30)
     asserts("cash_on_day(Date.today + 6.day)") { topic.cash_on_day(topic.today + 6.day) }.equals(30)
-    asserts("consumed") { topic.consumed }.equals(30)
+    asserts("consumed") { topic.consumed }.equals(300)
+    asserts("runway") { topic.runway }.equals(0)
   end
 
+  context "when you have $30" do
+    hookup { topic.cash_balance=30 }
+    asserts("runway") { topic.runway }.equals(1)
+  end
+
+  context "when you have $29" do
+    hookup { topic.cash_balance=29 }
+    asserts("runway") { topic.runway }.equals(0)
+  end
+
+  context "when you have $7000" do
+    hookup { topic.cash_balance=7000 }
+    asserts("runway") { topic.runway }.equals(181)
+  end
 end
