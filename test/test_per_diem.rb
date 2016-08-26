@@ -23,6 +23,8 @@ context "#Budget::PerDiem" do
     asserts("cash_on_day(Date.today + 6.day)") { topic.cash_on_day(topic.today + 6.day) }.equals(30)
     asserts("consumed") { topic.consumed }.equals(300)
     asserts("runway") { topic.runway }.equals(0)
+    asserts("monthly_spend") { topic.monthly_spend }.equals(1200)
+    asserts("daily_spend") { topic.daily_spend }.equals(45)
   end
 
   context "when you have $30" do

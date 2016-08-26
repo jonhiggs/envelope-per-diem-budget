@@ -12,16 +12,6 @@ require '../lib/budget.rb'
 #PER_DIEM = settings["per_diem"]
 #BUFFER = settings["buffer"]
 #
-#def per_diem_days a,b
-#  fridays = (a..b).to_a.select {|k| k.wday == 5}.size
-#  days(a,b) + ( weekend_bonus_value * fridays )
-#end
-#
-#def per_diem_days_remaining
-#  fridays = (Date.today+1..next_pay_day).to_a.select {|k| k.wday == 5}.size
-#  days_remaining + ( WEEKEND_BONUS * fridays )
-#end
-#
 #def buffer_remaining
 #  (per_diem_days_remaining * PER_DIEM * BUFFER).round(2)
 #end
