@@ -20,6 +20,14 @@ module Budget
     def buffer
       @cash_value * @buffer_multiplier
     end
+
+    def cash_total
+      cash + bonus
+    end
+
+    def total
+      cash + bonus + buffer
+    end
   end
 end
 

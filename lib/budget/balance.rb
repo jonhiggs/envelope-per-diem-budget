@@ -42,10 +42,7 @@ module Budget
     def spent
       c = 0
       days_elapsed.each do |d|
-        day = Budget::Day.new(d)
-        c += day.cash
-        c += day.buffer
-        c += day.bonus
+        c += Budget::Day.new(d).total
       end
       c
     end
@@ -64,6 +61,18 @@ module Budget
 
     def days_remaining
       @calendar.days.map {|d| d if d > @day }.compact
+    end
+
+    def runway
+      b = net
+      d = @calendar.day
+      r = []
+      until b <= 0
+        b -= Budget::Day.new(d).cash_total
+        r.push(d)
+        d += 1.day
+      end
+      r
     end
   end
 end

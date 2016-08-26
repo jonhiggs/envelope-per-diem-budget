@@ -1,10 +1,6 @@
 module Budget
   class Forecast
 
-    def consumed
-      calendar.elapsed_days.map { |d| cash_on_day(d) }.reduce(0, :+)
-    end
-
     def runway
       b = balance
       d = today

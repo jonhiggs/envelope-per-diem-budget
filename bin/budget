@@ -29,9 +29,9 @@ unless @balance.net.zero?
   puts "Net Balance:        $ #{@balance.net}"
 
   puts "\n# POSITION"
-  #puts "Cash Runway:        #{per_diem.runway} days"
-  puts "Break Even:         $ #{@balance.break_even}"
-  puts "Surplus:            $ #{@balance.surplus}"
+  puts "Break Even:         $ #{@balance.break_even.round(2)}"
+  puts "Surplus:            $ #{@balance.surplus.round(2)}"
+  puts "Runway:             #{@balance.runway.size} days (#{@balance.runway.last})"
   puts "Next Payday:        #{@balance.days_remaining.size} days (#{@balance.calendar.days.last + 1.day})"
   puts
 end

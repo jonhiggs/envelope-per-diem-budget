@@ -34,6 +34,7 @@ context "#Budget::Balance" do
     asserts("budgeted") { topic.budgeted }.equals(939)
     asserts("surplus") { topic.surplus }.equals(1061)
     asserts("break_even") { topic.break_even }.equals(86.95652173913044)
+    asserts("runway") { topic.runway.size }.equals(53)
   end
 
 end
