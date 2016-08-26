@@ -1,5 +1,8 @@
 module Budget
   class PerDiem
+    require 'active_support/all'
+
+    attr_reader :calendar
     attr_reader :cash_value
     attr_reader :bonus_value
     attr_accessor :cash_balance
@@ -13,23 +16,22 @@ module Budget
       @bank_balance = 0
     end
 
+    def today
+      calendar.day
+    end
+
     def balance
       cash_balance + bank_balance
     end
 
-    def cash_today
-      cash_on_day
-    end
-
-    def cash_on_day relative=0
-      day = Date.today+relative
+    def cash_on_day date=today
       cost = cash_value
-      cost += bonus_value if day.friday?
+      cost += bonus_value if date.friday?
       cost
     end
 
     def consumed
-      @calendar.elapsed_days
+      puts "not done"
     end
 
     def runway
