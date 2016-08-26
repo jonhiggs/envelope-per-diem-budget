@@ -1,8 +1,6 @@
 module Budget
   class Forecast
 
-    # with a balance of n, analyse stuff
-
     def consumed
       calendar.elapsed_days.map { |d| cash_on_day(d) }.reduce(0, :+)
     end
@@ -19,19 +17,6 @@ module Budget
       end
       r
     end
-
-    def monthly_spend
-      cost = 0
-      calendar.days.each do |d|
-        cost += cash_on_day(d)
-      end
-      cost
-    end
-
-    def daily_spend
-      monthly_spend / calendar.days.size
-    end
-
 
   end
 end

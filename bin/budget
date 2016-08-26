@@ -16,20 +16,26 @@ require '../lib/budget.rb'
 #end
 
 @balance = Budget::Balance.new
-@day=Budget::Day.new(Date.today)
+@today=Budget::Day.new(Date.today)
+@tomorrow=Budget::Day.new(Date.tomorrow)
 @balance.day = Date.today
 @balance.bank = ARGV[0].to_f || 0
 @balance.cash = ARGV[1].to_f || 0
 
 unless @balance.net.zero?
+  puts "# BALANCE"
   puts "Bank Balance:       $ #{@balance.bank}"
   puts "Cash Balance:       $ #{@balance.cash}"
   puts "Net Balance:        $ #{@balance.net}"
+
+  puts "\n# POSITION"
   #puts "Cash Runway:        #{per_diem.runway} days"
   puts "Break Even:         $ #{@balance.break_even}"
-  puts "Position:           $ #{@balance.surplus}"
+  puts "Surplus:            $ #{@balance.surplus}"
+  puts "Next Payday:        #{@balance.days_remaining.size} days (#{@balance.calendar.days.last + 1.day})"
   puts
 end
 
-puts "Remaining Days:     #{@balance.days_remaining.size} days (#{@balance.calendar.days.last + 1.day})"
-puts "Today's Per-Diem:   $#{@day.cash + @day.bonus}"
+puts "# PER-DIEM"
+puts "Today:              $#{@today.cash + @today.bonus}"
+puts "Tomorrow:           $#{@tomorrow.cash + @tomorrow.bonus}"
