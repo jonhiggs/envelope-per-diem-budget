@@ -19,26 +19,20 @@ context "#Budget::Balance" do
     asserts("calendar.day") { topic.calendar.day.to_s }.equals("2014-12-22")
     asserts("month.day") { topic.month.day.to_s }.equals("2014-12-22")
     asserts("calendar.days") { topic.calendar.days.map{|d| d.to_s} }.includes("2014-12-22")
+    asserts("days_elapsed") { topic.days_elapsed.size }.equals(8)
+    asserts("days_remaining") { topic.days_remaining.size }.equals(23)
   end
 
-  #context "when 2014/12/22 " do
-  #  hookup { topic.calendar.day = Date.parse("2014/12/22") }
-  #  asserts("calendar.days.size") { topic.calendar.days.size }.equals(31)
-  #  asserts("calendar.bonus_days.size") { topic.calendar.bonus_days.size }.equals(4)
-  #  asserts("cash") { topic.cash }.equals(930)
-  #  asserts("buffer") { topic.buffer }.equals(93)
-  #  asserts("bonus") { topic.bonus }.equals(240)
-  #  asserts("total") { topic.total }.equals(1263)
-  #end
-
-  #context "when 2016/02/15" do
-  #  hookup { topic.calendar.day = Date.parse("2016/02/15") }
-  #  asserts("calendar.days.size") { topic.calendar.days.size }.equals(29)
-  #  asserts("calendar.bonus_days.size") { topic.calendar.bonus_days.size }.equals(4)
-  #  asserts("cash") { topic.cash }.equals(870)
-  #  asserts("buffer") { topic.buffer }.equals(87)
-  #  asserts("bonus") { topic.bonus }.equals(240)
-  #  asserts("total") { topic.total }.equals(1197)
-  #end
+  context "when have $1500 and $500" do
+    hookup { topic.day = Date.parse("2014/12/22") }
+    hookup { topic.bank = 1500 }
+    hookup { topic.cash = 500 }
+    asserts("cash") { topic.cash }.equals(500)
+    asserts("bank") { topic.bank }.equals(1500)
+    asserts("net") { topic.net }.equals(2000)
+    asserts("spent") { topic.spent }.equals(324)
+    asserts("budgeted") { topic.budgeted }.equals(939)
+    asserts("surplus") { topic.surplus }.equals(1061)
+  end
 
 end
