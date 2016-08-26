@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 require '../lib/budget.rb'
-#settings_file = File.join(File.dirname(__FILE__), "settings.yml")
-#settings = YAML.load_file(settings_file)
-#def cash_runway balance=0
-#  days = 0
-#  while balance >= PER_DIEM
-#    balance -= cost_of_day(Date.today+days)
-#    days += 1
-#  end
-#  days
-#end
-#
-#def maximum_spend balance=0
-#  (balance / per_diem_days_remaining).round(2)
-#end
 
 @balance = Budget::Balance.new
 @today=Budget::Day.new(Date.today)
