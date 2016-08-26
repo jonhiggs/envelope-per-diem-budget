@@ -4,5 +4,5 @@ $:.unshift File.join(File.dirname(__FILE__), '/budget')
 require 'byebug'
 
 require 'calendar.rb'
-#require 'month.rb'
+require 'month.rb'
 require 'day.rb'

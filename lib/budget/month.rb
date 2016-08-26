@@ -6,23 +6,32 @@ module Budget
     attr_reader :cash_value
     attr_reader :bonus_value
 
-    def initialize calendar
-      @calendar = calendar
-      @cash_value = 30
-      @bonus_value = @cash_value * 2
-      @buffer = 0.10
+    def initialize day=Date.today
+      @calendar = Budget::Calendar.new
     end
 
     def cash
-      # cash_on_day for each day
+      c = 0
+      @calendar.days.each do |d|
+        c += Budget::Day.new(d).cash
+      end
+      c
     end
 
     def buffer
-      # buffer value * number of days
+      @calendar.days.size * Budget::Day.new().buffer
     end
 
     def bonus
-      # bonus_value * number of bonuses
+      b = 0
+      @calendar.days.each do |d|
+        b += Budget::Day.new(d).bonus
+      end
+      b
+    end
+
+    def total
+      cash + buffer + bonus
     end
 
   end

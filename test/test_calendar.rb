@@ -25,4 +25,10 @@ context "#Budget::Calendar" do
     asserts("bonus_days.last") { topic.bonus_days.last.to_s }.equals("2016-03-11")
   end
 
+  context "when 2016/03/15" do
+    hookup { topic.day=Date.parse("2016/03/15") }
+    asserts("days.first") { topic.days.first.to_s }.equals("2016-03-15")
+    asserts("days.last") { topic.days.last.to_s }.equals("2016-04-14")
+  end
+
 end
