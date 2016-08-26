@@ -77,16 +77,16 @@ unless per_diem.balance == 0
   puts "Cash Balance:       $ #{per_diem.cash_balance}"
   puts "Net Balance:        $ #{per_diem.balance}"
   puts "Cash Runway:        #{per_diem.runway} days"
-  #puts "Maximum Spend:      $ #{maximum_spend balance}"
+  puts "Maximum Spend:      $ #{maximum_spend balance}"
   #puts "Buffer:             $ #{buffer_balance balance}"
   puts
 end
 #puts "Budget:             $ #{budget_remaining}"
-#puts "Payday:             #{days_remaining} days"
-#puts
+puts "Payday:             #{calendar.remaining_days.size} days"
+puts
 
-puts "Days in Budget:     #{calendar.days.size}"
+#puts "Days in Budget:     #{calendar.days.size}"
 #puts "Monthy Budget:      $ #{budget_value}"
 #puts "Per-Diem Buffer:    $ #{per_diem_buffer_value}"
-puts "Per-Diem Cash:      $ #{per_diem.cash_today}"
+#puts "Per-Diem Cash:      $ #{per_diem.cash_today}"
 #puts "Weekend Bonus:      $ #{weekend_bonus_value}"
