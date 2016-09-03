@@ -4,6 +4,7 @@ A set of rules and helper scripts to simplify the maintenance of a per-diem enve
 
 - Low overheads
 - Minimise impulsive purchases
+- Mindful spending
 - Avoid missing out or breaking budget due to lack of planning or unforeseeable circumstances.
 - Easy to restart if you make a mistake.
 - You don't have to wait to the start of the month to be begin.
@@ -46,15 +47,14 @@ With better planning at the start of each month, I hope that this tool will make
     Tomorrow:           $30
     ```
 
-4. Make and adjustments or transfers so that you won't run out of money by the end of the month (as indicated by the `Surplus` value).
+4. Make any adjustments or transfers so that you won't run out of money by the end of the month (as indicated by the `Surplus` value).
 
 5. Go to the bank and withdraw a weeks worth of cash then put it in an envelope.
 
 6. Take today's per-diem from the envelope and put it in your wallet.
 
-7. Wait a day
+For the majority of the month, all you need to do is make sure that your envelope is topped up and you have taken your per-diem.
 
-8. Go back to step 6.
 
 ## Rules
 
