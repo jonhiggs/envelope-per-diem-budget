@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require '../lib/budget.rb'
+require File.join(File.dirname(__FILE__), "../lib/budget.rb")
 
 @balance = Budget::Balance.new
 @today=Budget::Day.new(Date.today)
