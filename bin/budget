@@ -2,8 +2,8 @@
 require File.join(File.dirname(__FILE__), "../lib/budget.rb")
 
 @balance = Budget::Balance.new
-@today=Budget::Day.new(Date.today)
-@tomorrow=Budget::Day.new(Date.tomorrow)
+@today = Budget::Day.new(Date.today)
+@tomorrow = Budget::Day.new(Date.tomorrow)
 @balance.day = Date.today
 @balance.bank = ARGV[0].to_f || 0
 @balance.cash = ARGV[1].to_f || 0

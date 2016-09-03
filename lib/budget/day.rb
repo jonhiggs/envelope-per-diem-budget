@@ -6,8 +6,7 @@ module Budget
       @day = day
       @per_diem = SETTINGS["per_diem"]
       @bonus_multiplier = SETTINGS["bonus_multiplier"]
-      @buffer_multiplier =SETTINGS["buffer_multiplier"]
-
+      @buffer_multiplier = SETTINGS["buffer_multiplier"]
     end
 
     def cash
