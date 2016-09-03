@@ -55,39 +55,53 @@ With better planning at the start of each month, I hope that this tool will make
 
 For the majority of the month, all you need to do is make sure that your envelope is topped up and you have taken your per-diem.
 
+---
 
-## Rules
-
-All living costs are to come from per-diem:
-
-- Food
-- Fuel
-- Entertainment
-- Consumables
-- Small purchases (books, music, clothing)
-- Large purchases (furniture, toys, gadgets)
+![Cash Flow](./doc/cash_flow.png)
 
 
-Any ongoing commitments are considered bills. As they cannot be manipulated by mindful spending, they are excluded:
+## Budget Rules
 
-- Rent
-- Electricity
-- Internet
-- Telephone
+Credit Card
+Savings Account
+Working Account
+Envelope
+Cash
 
-
-Emergencies do not need to come from per-diem:
-
-- Any medical treatment
-- Car repairs
-- Appliance replacement
+Bank Account Stuff:
+1. A bank account to hold your
 
 
-Any extra money goes into your days per-diem:
+1. All living costs are to come from per-diem:
 
-- Overtime
-- Sale of items
-- Gifts
+    - Food
+    - Fuel
+    - Entertainment
+    - Consumables
+    - Small purchases (books, music, clothing)
+    - Large purchases (furniture, toys, gadgets)
+
+
+1. Any ongoing recurring commitments are considered bills. As they cannot be manipulated by mindful spending, they are excluded:
+
+    - Rent
+    - Electricity
+    - Internet
+    - Telephone
+
+
+3. Emergencies do not need to come from per-diem:
+
+    - Medical treatment
+    - Car repairs
+    - Appliance replacement
+
+
+4. Additional, unplanned income goes into your days per-diem:
+
+    - Overtime
+    - Sale of items
+    - Gifts
 
 ---
 
@@ -98,24 +112,6 @@ At the start of the month, you pay your bills, determine how much you need to li
 For each day, you give yourself a per-diem.
 
 Every Friday, you give yourself a weekend bonus to make sure you have enough money to have some fun.
-
-
-## How to use
-
-On Pay Day:
-
-1. Pay bills and update `./bills.yml` with the costs.
-1. Calculate your savings with `./epd-payday` and make deposit.
-1. Calculate your months budget with `./epd-budget`.
-
-Every Day:
-
-1. Take your per-diem from your cash buffer.
-1. Make sure you're tracking well if you want to.
-
-Friday:
-
-1. Take your weekend bonus from your cash buffer
 
 
 
