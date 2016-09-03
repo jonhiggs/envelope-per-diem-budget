@@ -28,7 +28,7 @@ With better planning at the start of each month, I hope that this tool will make
     buffer_multiplier: 0.10   # Buffer to cover the irregular things. (0.10 == 10%)
     ```
 
-3. See how you are going. `./bin/budget <bank_balance> <cash_balance>`
+3. See how you are going. `./bin/epd-budget <bank_balance> <cash_balance>`
 
     ```ShellSession
     # BALANCE
@@ -105,8 +105,8 @@ Every Friday, you give yourself a weekend bonus to make sure you have enough mon
 On Pay Day:
 
 1. Pay bills and update `./bills.yml` with the costs.
-1. Calculate your savings with `./savings` and make deposit.
-1. Calculate your months budget with `./budget`.
+1. Calculate your savings with `./epd-payday` and make deposit.
+1. Calculate your months budget with `./epd-budget`.
 
 Every Day:
 
